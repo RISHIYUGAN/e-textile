@@ -54,6 +54,7 @@ export const Dashboard=()=>{
         AxiosInstance.post("/view_single_product",{_id:id})
         .then((res)=>{
           setInfo(res.data)
+          
         })
       }
     return(
@@ -141,7 +142,7 @@ export const Dashboard=()=>{
           </div>
                    <div className="des-wrapper">
                    <div className="e-prd-img-div">
-                       <img src={info.src}/>
+                       <img src={info.img}/>
                    </div>
                    <div className="e-des">
                   
