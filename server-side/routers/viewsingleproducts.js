@@ -30,19 +30,3 @@ viewsinglerouter.post("/view_single_product",async(req,res)=>{
 
 
 module.exports=viewsinglerouter
-
-
-
-
-// await Product.findOne({unique_id:0}).then((pr)=>{
-//       var prdcts=pr.products
-//             var finding= prdcts.find((each)=>{
-//                 return each._id===12
-//              })
-//       console.log("finding",finding);
-//      })
-
-
-
-
-
