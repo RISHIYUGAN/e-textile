@@ -14,11 +14,11 @@ export const Dashboard=()=>{
       price:500
     })
     useEffect(()=>{
-      AxiosInstance.get("")
+      AxiosInstance.get("/fetch_products")
       .then((res)=>{
         console.log(res.data)
       })
-    })
+    },[])
     const markedstar = (prdct) => {
         var arr = [];
         for (var i = 1; i <= prdct.rating; i++) {
