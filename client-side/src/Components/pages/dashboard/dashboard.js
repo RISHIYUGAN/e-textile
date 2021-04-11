@@ -17,7 +17,7 @@ export const Dashboard=()=>{
     useEffect(()=>{
       AxiosInstance.get("/fetch_products")
       .then((res)=>{
-        // console.log(res.data)
+        console.log("fetched")
         setProducts(res.data)
       })
     },[])
