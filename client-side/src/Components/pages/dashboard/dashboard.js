@@ -52,7 +52,7 @@ export const Dashboard=()=>{
       const eachDisplay=(id)=>{
         setEachdisplay(true)
         AxiosInstance.post("/view_single_product",{_id:id})
-        .then(()=>{
+        .then((res)=>{
           setInfo(res.data)
         })
       }
