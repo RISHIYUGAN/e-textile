@@ -1,0 +1,70 @@
+@font-face {
+  font-family: poppins-200;
+  src:url("../Assets/poppins/poppins/poppins-v5-latin-200.ttf");
+}
+@font-face{
+  font-family:poppins-500;
+  src: url("../Assets/poppins/poppins/poppins-v5-latin-500.ttf");
+ }
+@font-face {
+  font-family: Montserrat;
+  src: url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap");
+}
+@font-face {
+  font-family: OpenSans;
+  src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+}
+.App {
+  text-align: center;
+}
+
+.App-container{
+  /* width:100vw;
+  height: 100vh;
+  position: absolute; */
+  /* top:0px; */
+  /* overflow-x:auto; */
+  background-color: white;
+}
+  
+body{
+  overflow: auto;
+  max-height: 100vh;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+h1,h2,h3,h4,h5,h6{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

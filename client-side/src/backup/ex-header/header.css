@@ -1,0 +1,74 @@
+@font-face{
+    font-family: poppins;
+    src: url("../poppins/poppins/poppins-v5-latin-200.ttf");
+}
+.header-container{
+    background-color: grey;
+    height:70px;
+    width:95vw;
+    position:fixed;
+    border-radius: 20px;
+    top:5px;
+    left:0px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    display:flex;
+    align-items: center;
+    z-index:2;
+}
+.todo-logo{
+    width:60px;
+    height:55px;
+    margin-left: 20px;
+}
+.header-title{
+    padding-left:10px;
+    font-size:30px;
+    font-family:Arial, Helvetica, sans-serif 
+}
+.To{
+    color: rgb(3, 115, 190);
+}
+.Do{
+    color:rgb(184, 7, 7)
+}
+.pencil{
+    width:50px;
+    height:50px;
+    margin-left:-60px;
+    margin-top: 40px;
+    transform: rotate(225deg);
+}
+@media only screen and (max-width:600px){
+    .header-container{
+        background-color: grey;
+        height:50px;
+        width:95vw;
+        position:fixed;
+        border-radius: 20px;
+        top:5px;
+        left:0px;
+        margin-left: 50%;
+        transform: translate(-50%);
+        display:flex;
+        align-items: center;
+        z-index:2;
+    }
+    .todo-logo{
+        width:45px;
+        height:40px;
+        margin-left: 15px;
+    }
+    .header-title{
+        padding-left:10px;
+        font-size:25px;
+        font-family:Arial, Helvetica, sans-serif 
+    }
+    .pencil{
+        width:40px;
+        height:40px;
+        margin-left:-50px;
+        margin-top: 30px;
+        transform: rotate(225deg);
+    }
+}

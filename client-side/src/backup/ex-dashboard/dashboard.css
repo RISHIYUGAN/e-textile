@@ -1,0 +1,304 @@
+@font-face {
+  font-family: poppins;
+  src: url("../../poppins/poppins/poppins-v5-latin-200.ttf");
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap");
+}
+.Dashboard-container {
+  width: 90vw;
+  height:85%;
+  margin: 80px auto 0px auto;
+  overflow: auto;
+  /* background-color: rgb(218, 213, 213); */
+  background:linear-gradient(145deg,rgb(165, 226, 250) 50%,rgb(232, 242, 246) 50%);
+  border-radius: 20px;
+  font-family: poppins;
+  position: relative;
+  padding-bottom: 10px;
+}
+.titleDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.AddWorkButton {
+  margin-right: 5%;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, rgb(10, 255, 10), rgb(20, 211, 218));
+  font-family: poppins;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.513);
+}
+.AddButtonDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.completed{
+  margin-left:5%;
+  font-weight: bold;
+  font-size: 20px;
+}
+.inputContainer {
+  position: absolute;
+  top:-200px;
+  width: 100%;
+  display: flex;
+  height:200px;
+  flex-direction: column;
+  align-items:center;
+  background-color: rgb(1, 184, 1);
+  border-radius:0px 0px 20px 20px;
+  transition: all 1s;
+  overflow: hidden;
+}
+.inputDiv{
+    width:100%;
+    border-radius: 10px;
+    height:35px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding-left: 10px;
+}
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding:40px 0px ;
+}
+.d-input{
+    width:100%;
+    height: 100%;
+    outline: none;
+    border:none;
+    font-family: poppins;
+    box-sizing: border-box;
+    padding-left: 10px;
+    color:black;
+}
+
+.d-input:placeholder-shown{
+    font-family: poppins;
+    font-size: 25px;
+    cursor:auto;
+}
+.d-input::placeholder{
+    color: rgb(9, 218, 9);
+}
+.Add-Button{
+    color: white;
+    background:linear-gradient(45deg,rgb(10, 255, 10),rgb(0, 247, 255));
+    outline:none;
+    border-radius:20px;
+    border:none;
+    padding: 5px 15px;
+    font-weight: bolder;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.icon-Div{
+    padding-right:10px;
+}
+.exitDiv{
+    display:flex;
+    justify-content: flex-end;
+    color: white;
+    width:100%;
+    padding-right: 20px;
+    transition:all 1s;
+    padding-top: 20px;
+}
+.exit{
+    cursor: pointer;
+    -ms-transform-origin: 50% 50%;
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+    transition:all 0.5s;
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+    width: 20px;
+    height:20px;
+}
+.ediv_1{
+  width:20px;
+  height: 3px;
+  background-color: white;
+  transform: rotate(45deg);
+}
+.ediv_2{
+    position:absolute;
+    width:20px;
+    height: 3px;
+    background-color: white;
+    transform: rotate(135deg);
+  }
+
+.exit:hover{
+    transform-origin: 50% 50%;
+    transform: rotate(180deg);
+}
+.Parent-Div{
+    position:fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    width:100vw;
+    height:100vh;
+    overflow:auto;
+}
+.todo-List{
+    margin-top:10px;
+    width: 90%;
+    margin:10px auto 0px auto;
+    height: 75%;
+    border:1px solid grey;
+    background-color: rgb(224, 219, 219);
+    /* background-color: rgba(128, 128, 128, 0.767);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.876); */
+    overflow: auto;
+}
+.eachWork{
+  color:black;
+  padding:0px 10px;
+  font-family:Montserrat;
+
+  /* background:linear-gradient(0deg,white,rgba(127, 133, 222, 0.091)); */
+  /* border: 3px solid transparent; */
+  /* box-shadow: 0 2px rgba(128, 128, 128, 0.356); */
+}
+/* .break-line{
+  width:100%;
+  height:4px;
+  background-color:white ;
+} */
+.work-content{
+  padding:20px 0px;
+  font-size: 25px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content-end{
+  width:8px;
+  height:8px;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+.content-end-wrapper{
+  display: flex;
+  justify-content: center;
+}
+.Mark-button{
+  min-width:115px;
+  height:30px;
+  border-radius: 20px;
+  border:none;
+  outline:none;
+  background-color: rgb(26, 236, 26);
+  margin-right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.801);
+  padding:0px 10px;
+  cursor:pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Mark-button:hover{
+  background-color:rgb(43, 251, 43) ;
+}
+.tick{
+  width:30px;
+  height:40px;
+  margin-bottom:22px;
+} 
+.No-content{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+.No{
+  color:rgb(224, 5, 5);
+}
+
+@media only screen and (max-width:600px){
+  .Dashboard-container {
+    width: 90vw;
+    height:85%;
+    margin: 60px auto 0px auto;
+    overflow: auto;
+    background-color: white;
+    border-radius: 20px;
+    font-family: poppins;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  .input-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    padding:40px 0px ;
+}
+  .titleDiv {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .d-input:placeholder-shown{
+    font-family: poppins;
+    font-size: 20px;
+    cursor:auto;
+}
+.completed{
+  margin-left:5%;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top:10px;
+}
+.AddWorkButton {
+  margin-right: 5%;
+  padding: 1px 4px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, rgb(10, 255, 10), rgb(20, 211, 218));
+  font-family: poppins;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.513);
+  margin-top:10px;
+}
+  .work-content{
+    padding:20px 0px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .No-content{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
