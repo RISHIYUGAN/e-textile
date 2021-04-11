@@ -3,15 +3,16 @@ import "./dashboard.css"
 import p1 from "../../../Assets/images/bedcover1.jpg"
 // import {products} from "./products"
 import AxiosInstance from "../../axios/axios"
+import axios from "axios"
 
 export const Dashboard=()=>{
     const [eachdisplay,setEachdisplay]=useState(false)
     const [info,setInfo]=useState({
-        name:"SPACES Miami Printed Bed Cover",
-      src:p1,
-      stock:true,
-      rating:3,
-      price:500
+    //  name:"SPACES Miami Printed Bed Cover",
+    //   src:p1,
+    //   stock:true,
+    //   rating:3,
+    //   price:500
     })
     const[products,setProducts]=useState([])
     useEffect(()=>{
@@ -48,6 +49,13 @@ export const Dashboard=()=>{
           return arr.map((star) => star);
         }
       };
+      const eachDisplay=(id)=>{
+        setEachdisplay(true)
+        AxiosInstance.post("/view_single_product",{_id:id})
+        .then(()=>{
+          setInfo(res.data)
+        })
+      }
     return(
         <div className="db-container">
           <div className="d-title">
@@ -55,7 +63,9 @@ export const Dashboard=()=>{
           </div>
            <div className="products-display">
            {products.map((each)=>
-             <div className="each-product" onClick={()=>{setEachdisplay(true)}}>
+             <div className="each-product" onClick={()=>{
+               eachDisplay(each._id)}
+               }>
                  <div className="img-div">
                  <img src={each.img} className="img"/>
                  </div>
