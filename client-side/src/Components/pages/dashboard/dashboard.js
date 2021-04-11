@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react"
 import "./dashboard.css"
 import p1 from "../../../Assets/images/bedcover1.jpg"
-import {products} from "./products"
+// import {products} from "./products"
 import AxiosInstance from "../../axios/axios"
 
 export const Dashboard=()=>{
@@ -13,10 +13,12 @@ export const Dashboard=()=>{
       rating:3,
       price:500
     })
+    const[products,setProducts]=useState([])
     useEffect(()=>{
       AxiosInstance.get("/fetch_products")
       .then((res)=>{
-        console.log(res.data)
+        // console.log(res.data)
+        setProducts(res.data)
       })
     },[])
     const markedstar = (prdct) => {
