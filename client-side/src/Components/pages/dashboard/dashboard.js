@@ -9,7 +9,7 @@ import moment from "moment"
 export const Dashboard=()=>{
     const [eachdisplay,setEachdisplay]=useState(false)
     const [name,setName]=useState("")
-    const [products,setProducts]=useState([])
+    // const [products,setProducts]=useState([])
     const [info,setInfo]=useState({
     //  name:"SPACES Miami Printed Bed Cover",
     //   src:p1,
