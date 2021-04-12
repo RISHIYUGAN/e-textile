@@ -58,12 +58,13 @@ const Login = (props) => {
     })
     .catch((res)=>{
       setSignupLoading(false);
-      // if(res.status===401){
+      console.log(res.status)
+      if(res.status===401){
         document.getElementById("email-error").innerHTML="Email already exists !"
         e.target.signupname.value=""
         e.target.signupemail.value=""
         e.target.signuppassword.value=""
-      // }
+      }
       
     })
 
@@ -81,6 +82,7 @@ const Login = (props) => {
       })
       .catch((res) => {
         console.log(res);
+        console.log(res.status)
         setLoginLoading(false)
         if(res.status===401){
           document.getElementById("error").innerHTML=" Invalid username or password !"

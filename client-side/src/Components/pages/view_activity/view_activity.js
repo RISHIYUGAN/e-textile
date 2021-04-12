@@ -135,7 +135,7 @@ const ViewActivity = (props) => {
   return (
     <div className="his-container">
       <div id="his-pop-up-container" className="his-pop-up-container">
-         <div id="his-pop-up" className="his-pop-up">
+         <div id="his-pop-up" className="his-pop-up">  
          <div
             className="exitDiv"
            style={{
