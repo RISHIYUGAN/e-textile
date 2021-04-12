@@ -56,20 +56,24 @@ const Profile = () => {
       setProfile(res.data)
     })
   },[])
-  const updateProfile=(name)=>{
+  useEffect(()=>{
+   let obj={
+      name:document.getElementById("user-name").innerHTML,
+      image:updateimage
+    }
+    AxiosInstance.post("update_profile",obj)
+    .then((res)=>{
+      console.log(res.data)
+      setProfile(res.data)
+    })
+  },[updateimage])
+  const updateProfile=()=>{
     setEditing(false)
     let obj;
-    if(name){
+    
      obj={
       name:document.getElementById("user-name").innerHTML,
       image:profile.image
-     }
-    }
-    else{
-obj={
-  name:document.getElementById("user-name").innerHTML,
-  image:updateimage
-     }
     }
     AxiosInstance.post("update_profile",obj)
     .then((res)=>{
@@ -115,7 +119,7 @@ obj={
               {editing&&
               <div className="upd-button">
               <button onClick={()=>{
-                updateProfile(false)
+                updateProfile()
               }}>{
                 loading?<div><i class="fas fa-sync"></i>&nbsp; <h4>Update</h4></div>:<div><i class="fas fa-sync fa-spin"></i>&nbsp; <h4>Update</h4></div>
               }
