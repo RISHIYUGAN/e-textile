@@ -56,15 +56,17 @@ const Login = (props) => {
         setSignup(false)
         document.getElementById("email-error").innerHTML=""
     })
-    .catch((res)=>{
+    .catch((error)=>{
       setSignupLoading(false);
-      console.log(res.status)
-      if(res.status===401){
-        document.getElementById("email-error").innerHTML="Email already exists !"
-        e.target.signupname.value=""
-        e.target.signupemail.value=""
-        e.target.signuppassword.value=""
-      }
+      console.log(error)
+      console.log(error.response)
+      console.log(error.response.status)
+      // if(res.status===401){
+      //   document.getElementById("email-error").innerHTML="Email already exists !"
+      //   e.target.signupname.value=""
+      //   e.target.signupemail.value=""
+      //   e.target.signuppassword.value=""
+      // }
       
     })
 
@@ -80,15 +82,18 @@ const Login = (props) => {
         setLoginLoading(false)
         document.getElementById.id("error").innerHTML=""
       })
-      .catch((res) => {
-        console.log(res);
-        console.log(res.status)
+      .catch((error) => {
+        // console.log(res);
+        console.log(error)
+        console.log(error.response)
+        console.log(error.response.status)
+        // console.log(res.status)
         setLoginLoading(false)
-        if(res.status===401){
-          document.getElementById("error").innerHTML=" Invalid username or password !"
-          e.target.email.value=""
-          e.target.password.value=""
-        }
+        // if(res.status===401){
+        //   document.getElementById("error").innerHTML=" Invalid username or password !"
+        //   e.target.email.value=""
+        //   e.target.password.value=""
+        // }
       });
   };
   useEffect(() => {

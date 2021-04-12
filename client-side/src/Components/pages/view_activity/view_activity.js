@@ -127,7 +127,7 @@ const ViewActivity = (props) => {
           else{
             AxiosInstance.post("/view_previous_bookings").then((res)=>{
               console.log(res.data)
-              // setpreviousBookings(res.data)
+              setpreviousBookings(res.data)
                 })
     }
   
