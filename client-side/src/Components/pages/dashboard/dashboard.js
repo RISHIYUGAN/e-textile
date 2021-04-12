@@ -57,7 +57,7 @@ export const Dashboard=()=>{
         AxiosInstance.post("/view_single_product",{_id:id})
         .then((res)=>{
           setInfo(res.data)
-          document.getElementById("product").defaultValue=res.data.name
+          document.getElementById("product").value=res.data.name
         })
       }
       const addbookings=(e)=>{
@@ -133,7 +133,7 @@ export const Dashboard=()=>{
                    placeholder="Product Name"
                    name="product"
                    id="product"
-                   defaultValue={info.name}
+                 value={info.name}
                    />
                  </div>
                  <div className="input-3">
