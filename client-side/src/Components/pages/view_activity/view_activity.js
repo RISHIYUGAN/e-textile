@@ -116,7 +116,7 @@ const ViewActivity = (props) => {
     })
   }
   useEffect(()=>{
-    AxiosInstance.post("view_current_booking").then((res)=>{
+    AxiosInstance.post("/view_current_booking").then((res)=>{
   setCurrentBookings(res.data)
     })
   },[])
