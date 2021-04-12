@@ -106,10 +106,11 @@ const ViewActivity = (props) => {
       return arr.map((star) => star);
     }
   };
-  const updateBookings=(status)=>{
+  const updateBookings=()=>{
+
     AxiosInstance.post("/update_previous_booking",{
       id:id,
-      booking_status:status
+      booking_status:document.getElementById("his-pop-up-message").innerHTML==="Are you sure? Do you want to cancel your Booking"?false:true
     })
     .then((res)=>{
       console.log(res.data)
@@ -144,12 +145,12 @@ const ViewActivity = (props) => {
            </h4>
            <div className="pop-up-button">
              <button id="yes-button" onClick={()=>{
-               updateBookings(true)
+               updateBookings()
              }}>
                Yes
              </button>
              <button id="no-button" onClick={()=>{
-             updateBookings(false)
+               setPopup(false)
              }}>
                 No
              </button>
