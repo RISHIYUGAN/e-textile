@@ -112,7 +112,7 @@ form{
     /* border:2px solid red; */
     text-align: end;
     /* padding:0px 5px 0px 0px */
-    margin-right: 10px;
+    margin-right:5px;
     font-size: 18px;
     color: rgb(255, 255, 255);
    vertical-align: bottom;
@@ -137,22 +137,43 @@ form{
     display: flex;
     margin-top: 50px;
   }
-  
+  .contact-div{
+    width:95%;
+    margin:auto;
+    /* height: 30px; */
+    transition:border-bottom 1s;
+    display: flex;
+    /* border: 2px solid red; */
+    margin-top: 25px;
+    overflow-x:hidden;
+    max-width:400px!important;
+    justify-content: center;
+  }
   .division_2:focus-within{
     /* border-bottom:2px solid red */
   }
   .division_3{
-    width:95%;
+    max-width:45%;
     margin:auto;
     height: 30px;
-    border-bottom:2px solid white;
     transition:border-bottom 1s;
     display: flex;
-    margin-top: 20px;
-    /* margin-top: 30px; */
+    border-bottom:2px solid white;
+    margin:0px 15px;
+    /* border: 2px solid red; */
   }
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
   .division_3>input{
-    width:350px!important;
+    /* width:350px; */
     /* border:2px solid red; */
   }
   .division_3:focus-within{
@@ -165,6 +186,7 @@ form{
     border-bottom:2px solid white;
     transition:border-bottom 1s;
     display: flex;
+    /* border: 2px solid red; */
   }
   
   .division_4:focus-within{
@@ -177,6 +199,7 @@ form{
     border-bottom:2px solid white;
     transition:border-bottom 1s;
     display: flex;
+    
   }
   
   .division_5:focus-within{
@@ -193,6 +216,7 @@ form{
     font-family: poppins-500; 
     font-size: 16px;
     width:300px;
+    /* border: 2px solid red; */
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

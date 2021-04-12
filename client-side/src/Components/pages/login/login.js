@@ -63,6 +63,7 @@ const Login = (props) => {
         e.target.signupname.value=""
         e.target.signupemail.value=""
         e.target.signuppassword.value=""
+        e.target.signupcontact.value=""
       }
       
     })
@@ -244,6 +245,7 @@ const Login = (props) => {
                     <i class="fas fa-user-plus"></i>
                   </div>
                   <div>
+                    <div className="contact-div">
                     <div className="division_3">
                       <div>
                         <i class="fas fa-user"></i>
@@ -259,7 +261,27 @@ const Login = (props) => {
                         type="text"
                         className="input"
                         placeholder="User-name"
+                        required={true}
                       />
+                    </div>
+                    <div className="division_3">
+                      <div >
+                      <i class="fas fa-phone"></i>
+                      </div>
+                      <input
+                        name="signucontact"
+                        onChange={(e) => {
+                          setSignupDetails({
+                            ...signupDetails,
+                            contact: e.target.value,
+                          });
+                        }}
+                        type="number"
+                        className="input"
+                        placeholder="Contact"
+                        required={true}
+                      />
+                    </div>
                     </div>
                     <br />
                     <br />
@@ -279,6 +301,7 @@ const Login = (props) => {
                         type="email"
                         className="input"
                         placeholder="Email-id"
+                        required={true}
                       />
                     </div>
                     <br />
@@ -294,6 +317,7 @@ const Login = (props) => {
                             ...signupDetails,
                             password: e.target.value,
                           });
+                          
                         }}
                         type="password"
                         name="signuppassword"
