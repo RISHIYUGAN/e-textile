@@ -44,8 +44,8 @@ const Login = (props) => {
     if( document.getElementById("email-error")){
       document.getElementById("email-error").innerHTML=""
     }
-    if(document.getElementById.id("error")){
-      document.getElementById.id("error").innerHTML=""
+    if(document.getElementById("error")){
+      document.getElementById("error").innerHTML=""
     }
   },[signup])
   const newUser = (e) => {
