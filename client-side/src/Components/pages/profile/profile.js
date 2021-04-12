@@ -2,16 +2,10 @@ import React, { useEffect,useState,useRef } from "react";
 import "./profile.css";
 import user from "../../../Assets/images/user-logos.png";
 import {compressFile} from "../../compress/compress"
+import AxiosInstance from "../../axios/axios";
 
 const Profile = () => {
-  const [profile, setProfile] = useState({
-    name: "Rishiyugan S",
-    email: "yuganrishi2001@gmail.com",
-    customer_id: 2356,
-    currentbookings: 20,
-    upcomingbookings: 20,
-    contact: "7339654794",
-  });
+  const [profile, setProfile] = useState({});
   const [changed,setChanged]=useState(false)
   const [processing,setProcessing]=useState(false)
   const [formData,setFormData]=useState({})
@@ -19,6 +13,8 @@ const Profile = () => {
   const [imageError,setImageError]=useState("")
   const [popup, setPopup] = useState(false);
   const [editing,setEditing] = useState(false)
+  const [loading,setLoading]=useState(false)
+  const [updateimage,setUpdateImage]=useState("")
   useEffect(()=>{
   if(editing){
    document.getElementById("user-name").contentEditable="true"
@@ -46,6 +42,7 @@ const Profile = () => {
             ...prev,
             localImage: compressedFiles[0].dataWithPrefix,
           }));
+          setUpdateImage(compressedFiles[0].dataWithPrefix)
           document.getElementById("profile-pic").style.backgroundImage= `url(${compressedFiles[0].dataWithPrefix})`
         });
       } else {
@@ -53,6 +50,32 @@ const Profile = () => {
       }
     }
   };
+  useEffect(()=>{
+    AxiosInstance.post("view_profile")
+    .then((res)=>{
+      setProfile(res.data)
+    })
+  },[])
+  const updateProfile=(name,update)=>{
+    setEditing(false)
+    let obj;
+    if(name){
+     obj={
+      name:document.getElementById("user-name").innerHTML,
+      image:profile.image
+     }
+    }
+    else{
+obj={
+  name:document.getElementById("user-name").innerHTML,
+  image:updateimage
+     }
+    }
+    AxiosInstance.post("update_profile",obj)
+    .then((res)=>{
+      setProfile(res.data)
+    })
+  }
   return (
     <div className="pf-container">
        <div className="rep-image">
@@ -83,7 +106,7 @@ const Profile = () => {
           onClick={()=>{
             inputref.current.click()
           }}
-          style={{ backgroundImage: `url(${user})` }}
+          style={{ backgroundImage: `url(${profile.image})` }}
         ></div>
         <div  className="user-name" >
           <h2 id="user-name" spellCheck="false" style={{padding:"0px 10px"}}>{profile.name}
@@ -91,10 +114,11 @@ const Profile = () => {
               {editing&&
               <div className="upd-button">
               <button onClick={()=>{
-                setEditing
-                (false)
-              }}>
-              <i class="fas fa-sync"></i>&nbsp; <h4>Update</h4>
+                updateProfile(false)
+              }}>{
+                loading?<div><i class="fas fa-sync"></i>&nbsp; <h4>Update</h4></div>:<div><i class="fas fa-sync fa-spin"></i>&nbsp; <h4>Update</h4></div>
+              }
+     
               </button>
               </div>
                  }
