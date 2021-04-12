@@ -107,12 +107,13 @@ const ViewActivity = (props) => {
     }
   };
   const updateBookings=(status)=>{
-    AxiosInstance.post("/update_current_orders",{
+    AxiosInstance.post("/update_previous_booking",{
       id:id,
       booking_status:status
     })
     .then((res)=>{
       console.log(res.data)
+      setCurrentBookings(res.data)
     })
   }
   useEffect(()=>{

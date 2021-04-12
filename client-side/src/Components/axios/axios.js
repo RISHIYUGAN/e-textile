@@ -4,8 +4,6 @@ import { connect } from "react-redux";
     const AxiosInstance =axios.create({
       baseURL: "http://localhost:3000/",
       headers: {
-        // "Access-Control-Allow-Origin": "*",
-        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         Authorization: `Bearer ${localStorage.getItem("tok")}`,
       },
     });
