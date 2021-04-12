@@ -109,14 +109,14 @@ const ViewActivity = (props) => {
   };
   const updateBookings=()=>{
     console.log(status)
-    // AxiosInstance.post("/update_previous_booking",{
-    //   id:id,
-    //   booking_status:status  
-    // })
-    // .then((res)=>{
-    //   console.log(res.data)
-    //   setCurrentBookings(res.data)
-    // })
+    AxiosInstance.post("/update_previous_booking",{
+      id:id,
+      booking_status:status  
+    })
+    .then((res)=>{
+      console.log(res.data)
+      setCurrentBookings(res.data)
+    })
   }
   useEffect(()=>{
     // console.log("running");
@@ -260,11 +260,10 @@ const ViewActivity = (props) => {
                     </div>
                     <div className="book-btn-div">
                         <button className="cancel" onClick={()=>{
-                           setStatus(true)
+                           setStatus(false)
                           document.getElementById("his-pop-up-message").innerHTML="Are you sure? Do you want to cancel your Booking?"
                           setPopup(true)
                           setId(each._id)
-
                         }}>Cancel</button>
                         <button className="delivered"  onClick={()=>{
                           setStatus(true)
