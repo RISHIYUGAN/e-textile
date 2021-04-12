@@ -14,6 +14,7 @@ import {
   SingleDatePicker,
   DayPickerRangeController,
 } from "react-dates";
+import AxiosInstance from "../../axios/axios";
 
 const ViewActivity = (props) => {
   // const [state,dispatch]= useReducer(DashbdPersonalReducer,false)
@@ -23,6 +24,8 @@ const ViewActivity = (props) => {
   const [enddate, setEndDate] = useState(moment());
   const [endcalenderfoc, setEndCalenderfoc] = useState(false);
   const [current, setCurrent] = useState(true);
+  const [popup,setPopup]=useState(false)
+  const [id,setId]=useState()
   const [currentBookings, setCurrentBookings] = useState([
     {
         name: "SPACES Miami Printed Bed Cover",
@@ -41,35 +44,25 @@ const ViewActivity = (props) => {
         quantity:8
       }
   ]);
-  const [previousBookings, setpreviousBookings] = useState([
-    // {
-    //     name: "SPACES Miami Printed Bed Cover",
-    //     img: "/static/media/bedcover1.da656c91.jpg",
-    //     date:"12/03/2001",
-    //     delivery:"12/03/2001",
-    //     rating:3,
-    //     quantity:10
-    //   },
-    //   {
-    //     name: "Screen",
-    //     img: "/static/media/screen2.6ee9dfe6.jpg",
-    //     date:"12/03/2001",
-    //     delivery:"12/03/2001",
-    //     rating:4,
-    //     quantity:8
-    //   }
-  ]);
+  const [previousBookings, setpreviousBookings] = useState([]);
+  useEffect(()=>{
+   if(popup){
+    document.getElementById("his-pop-up-container").style.display="flex"
+    setTimeout(()=>{
+      document.getElementById("his-pop-up").style.transform="translateY(10px)"
+    },100)
+   }
+   else{
+    document.getElementById("his-pop-up-container").style.display="none"
+    document.getElementById("his-pop-up").style.transform="translateY(-120%)"
+   }
+  },[popup])
   useEffect(() => {
     console.log("runningv");
   }, []);
   const handleSelect = (ranges) => {
     console.log(ranges);
-    // {
-    //   selection: {
-    //     startDate: [native Date Object],
-    //     endDate: [native Date Object],
-    //   }
-    // }
+  
   };
   const selectionRange = {
     startDate: new Date(),
@@ -78,15 +71,12 @@ const ViewActivity = (props) => {
   };
   const onDateChange = (date) => {
     if (date) {
-      // this.setState(()=>({
-      //   date
-      // }))
       setStartDate(date);
     }
   };
 
   const onFocusChange = ({ focused }) => {
-    // console.log(focused)
+  
     setStartCalenderfoc(focused);
   };
   const markedstar = (prdct) => {
@@ -116,8 +106,51 @@ const ViewActivity = (props) => {
       return arr.map((star) => star);
     }
   };
+  const updateBookings=(status)=>{
+    AxiosInstance.post("/update_current_orders",{
+      id:id,
+      booking_status:status
+    })
+    .then((res)=>{
+      console.log(res.data)
+    })
+  }
+
   return (
     <div className="his-container">
+      <div id="his-pop-up-container" className="his-pop-up-container">
+         <div id="his-pop-up" className="his-pop-up">
+         <div
+            className="exitDiv"
+           style={{
+             right:"5px",
+             top:"5px"
+           }}
+          >
+            <div className="exit" onClick={()=>
+              {setPopup(false)
+              }}>
+              <div className="ediv_1" style={{width:"15px",backgroundColor:"gray"}}></div>
+              <div className="ediv_2" style={{width:"15px",backgroundColor:"gray"}}></div>
+            </div>
+          </div>
+           <h4 id="his-pop-up-message" className="his-pop-up-message">
+            
+           </h4>
+           <div className="pop-up-button">
+             <button id="yes-button" onClick={()=>{
+               updateBookings(true)
+             }}>
+               Yes
+             </button>
+             <button id="no-button" onClick={()=>{
+             updateBookings(false)
+             }}>
+                No
+             </button>
+             </div>
+         </div>
+      </div>
       <div className="h-title">
         <i class="fa fa-history" aria-hidden="true"></i>
         <h2>History</h2>
@@ -152,7 +185,6 @@ const ViewActivity = (props) => {
       <div>
         {current ? (
           <div className="products-display" style={{ marginTop: "50px" }}>
-
             {currentBookings.length===0?
             <div className="list-empty">
               <text style={{color:"red"}}>No</text>&nbsp;Current Bookings Found
@@ -167,6 +199,7 @@ const ViewActivity = (props) => {
                   marginTop: "5px",
                   padding: "10px",
                   boxSizing: "border-box",
+                  
                 }}
               >
                 <div
@@ -177,6 +210,7 @@ const ViewActivity = (props) => {
                     width: "100%",
                     padding: "20px 10px",
                     alignItems: "flex-start",
+                    cursor:"default"
                   }}
                 >
                   <div
@@ -208,8 +242,17 @@ const ViewActivity = (props) => {
                       </div>
                     </div>
                     <div className="book-btn-div">
-                        <button className="cancel">Cancel</button>
-                        <button className="delivered">Delivered</button>
+                        <button className="cancel" onClick={()=>{
+                          document.getElementById("his-pop-up-message").innerHTML="Are you sure? Do you want to cancel your Booking?"
+                          setPopup(true)
+                          setId(each._id)
+
+                        }}>Cancel</button>
+                        <button className="delivered"  onClick={()=>{
+                        document.getElementById("his-pop-up-message").innerHTML="Are you sure? Have you received your Booking?"
+                          setPopup(true)
+                          setId(each._id)
+                        }}>Delivered</button>
                     </div>
                   </div>
                 </div>

@@ -109,6 +109,7 @@
  font-family: poppins;
  margin-right: 5px;
  margin-bottom: 5px;
+ cursor: pointer;
 }
 .delivered{
  background-color: green;
@@ -116,4 +117,53 @@
  font-family: poppins;
  margin-left:5px;
  margin-bottom: 5px;
+ cursor:pointer;
+}
+.his-pop-up-container{
+  width:100vw;
+  height:100vh;
+  position: fixed;
+  top:0px;
+  left:0px;
+  background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+z-index: 3;
+display: flex;
+align-items: flex-start;
+/* max-height: fit-content; */
+justify-content: center;
+}
+.his-pop-up{
+  margin-top: 20px;
+  background-color: rgb(221, 221, 221);
+  padding:40px 20px 20px 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(204, 203, 203);
+  transition: all 0.3s ease;
+
+  /* transform: translateY(-120%); */
+}
+.pop-up-button{
+  display: flex;
+  flex:1;
+}
+.pop-up-button>button{
+  flex: 1;
+  margin:30px 10px 10px 10px;
+  border:none;
+  outline: none;
+  padding: 5px;
+  font-family: poppins;
+  color:white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#yes-button{
+  background-color: rgb(0, 197, 0);
+}
+#no-button{
+  background-color: rgb(255, 41, 41);
 }

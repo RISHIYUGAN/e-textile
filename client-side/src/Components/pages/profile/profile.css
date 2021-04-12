@@ -8,6 +8,10 @@
   padding: 0px 10px 10px 10px;
   box-sizing: border-box;
 }
+.rep-image{
+  position: absolute;
+  top: -100vw;
+}
 .profile-pic-div {
   /* border: 2px solid red; */
   display: flex;

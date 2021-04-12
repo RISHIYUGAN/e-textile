@@ -1,27 +1,29 @@
 import React,{useState,useEffect} from "react"
 import "./dashboard.css"
 import p1 from "../../../Assets/images/bedcover1.jpg"
-// import {products} from "./products"
+import {products} from "./products"
 import AxiosInstance from "../../axios/axios"
 import axios from "axios"
+import moment from "moment"
 
 export const Dashboard=()=>{
     const [eachdisplay,setEachdisplay]=useState(false)
+    const [name,setName]=useState("")
     const [info,setInfo]=useState({
-    //  name:"SPACES Miami Printed Bed Cover",
-    //   src:p1,
-    //   stock:true,
-    //   rating:3,
-    //   price:500
+     name:"SPACES Miami Printed Bed Cover",
+      src:p1,
+      stock:true,
+      rating:3,
+      price:500
     })
-    const[products,setProducts]=useState([])
-    useEffect(()=>{
-      AxiosInstance.get("/fetch_products")
-      .then((res)=>{
-        console.log("fetched")
-        setProducts(res.data)
-      })
-    },[])
+    // const[products,setProducts]=useState([])
+    // useEffect(()=>{
+    //   AxiosInstance.get("/fetch_products")
+    //   .then((res)=>{
+    //     console.log("fetched")
+    //     setProducts(res.data)
+    //   })
+    // },[])
     const markedstar = (prdct) => {
         var arr = [];
         for (var i = 1; i <= prdct.rating; i++) {
@@ -56,6 +58,19 @@ export const Dashboard=()=>{
           setInfo(res.data)
           
         })
+      }
+      const addbookings=(e)=>{
+       e.preventDefault();
+       AxiosInstance.post("update_current_booking",{
+         _id:info._id,
+         quantity:e.target.quantity.value,
+         date:moment(e.target.date.value).format("DD/MM/YYYY"),
+         token:localStorage.getItem("tok")
+       })
+       .then((res)=>{
+        console.log(res.data)
+       })
+      console.log(moment(e.target.date.value).format("DD/MM/YYYY"),e.target.product.value,e.target.quantity.value)
       }
     return(
         <div className="db-container">
@@ -96,27 +111,34 @@ export const Dashboard=()=>{
               <div className="ediv_2" style={{backgroundColor:"rgb(53, 53, 53)"}}></div>
             </div>
           </div>
-               <form>
+               <form onSubmit={(e)=>{
+                 addbookings(e)
+               }}>
                <h3>Place Your Booking</h3>
                  <div className="input-1">
                  <input
                  type="text"
                  placeholder="Pieces Required"
+                 name="quantity"
                  />
                   <input
                  type="date"
                  placeholder="Required date"
+                 name="date"
                  />
                  </div>
                  <div className="input-2">
                    <input
                    type="text"
                    placeholder="Product Name"
+                   name="product"
+                   defaultValue={info.name}
                    />
                  </div>
                  <div className="input-3">
                    <textarea
                    placeholder="Add your Comments"
+                   name="message"
                    />
                  </div>
                  <button><h3>Book Now</h3></button>
@@ -127,11 +149,13 @@ export const Dashboard=()=>{
                <div className="each-prdct">
                <div
             className="exitDiv"
-           
           >
-            <div className="exit" onClick={()=>
+            <div className="exit"
+            style={{
+              marginRight:"0px"
+            }}
+             onClick={()=>
               {setEachdisplay(false)
-
               }}>
               <div className="ediv_1"></div>
               <div className="ediv_2"></div>
