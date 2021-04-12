@@ -20,6 +20,7 @@ const Login = (props) => {
     email: "",
     password: "",
   });
+  
   const LoginbuttonDisable = () => {
     if (loginDetails.email && loginDetails.password) {
       var loginButton = document.querySelector("#loginButton");
@@ -39,7 +40,10 @@ const Login = (props) => {
       submitButton.disabled = true;
     }
   };
-
+  useEffect(()=>{
+    document.getElementById("email-error").innerHTML=""
+    document.getElementById.id("error").innerHTML=""
+  },[signup])
   const newUser = (e) => {
     e.preventDefault();
     document.getElementById("submitButton").disabled="true"
@@ -55,17 +59,21 @@ const Login = (props) => {
       setSignupLoading(false);
         setSignup(false)
         document.getElementById("email-error").innerHTML=""
+        
     })
     .catch((error)=>{
       setSignupLoading(false);
-      if(error.response.status===401){
-        document.getElementById("email-error").innerHTML="Email already exists !"
-        e.target.signupname.value=""
-        e.target.signupemail.value=""
-        e.target.signuppassword.value=""
-        e.target.signupcontact.value=""
+      if(error.response){
+        if(error.response.status===401){
+          document.getElementById("email-error").innerHTML="Email already exists !"
+          e.target.signupname.value=""
+          e.target.signupemail.value=""
+          e.target.signuppassword.value=""
+          e.target.signupcontact.value=""
+        }
+        
       }
-      
+    
     })
 
   };
