@@ -281,7 +281,7 @@ const Login = (props) => {
                       <i class="fas fa-phone"></i>
                       </div>
                       <input
-                        name="signucontact"
+                        name="signupcontact"
                         onChange={(e) => {
                           setSignupDetails({
                             ...signupDetails,
