@@ -41,8 +41,12 @@ const Login = (props) => {
     }
   };
   useEffect(()=>{
-    document.getElementById("email-error").innerHTML=""
-    document.getElementById.id("error").innerHTML=""
+    if( document.getElementById("email-error")){
+      document.getElementById("email-error").innerHTML=""
+    }
+    if(document.getElementById.id("error")){
+      document.getElementById.id("error").innerHTML=""
+    }
   },[signup])
   const newUser = (e) => {
     e.preventDefault();

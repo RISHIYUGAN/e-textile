@@ -116,6 +116,7 @@ const ViewActivity = (props) => {
     .then((res)=>{
       console.log(res.data)
       setCurrentBookings(res.data)
+      setPopup(false)
     })
   }
   useEffect(()=>{
