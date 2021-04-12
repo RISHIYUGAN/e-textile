@@ -57,20 +57,21 @@ const Profile = () => {
     })
   },[])
   useEffect(()=>{
-   let obj={
-      name:document.getElementById("user-name").innerHTML,
-      image:updateimage
+    if(updateimage){
+      let obj={
+        name:document.getElementById("user-name").innerHTML,
+        image:updateimage
+      }
+      AxiosInstance.post("update_profile",obj)
+      .then((res)=>{
+        console.log(res.data)
+        setProfile(res.data)
+      })
     }
-    AxiosInstance.post("update_profile",obj)
-    .then((res)=>{
-      console.log(res.data)
-      setProfile(res.data)
-    })
   },[updateimage])
   const updateProfile=()=>{
     setEditing(false)
     let obj;
-    
      obj={
       name:document.getElementById("user-name").innerHTML,
       image:profile.image
