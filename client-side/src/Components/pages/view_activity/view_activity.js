@@ -26,6 +26,7 @@ const ViewActivity = (props) => {
   const [current, setCurrent] = useState(true);
   const [popup,setPopup]=useState(false)
   const [id,setId]=useState()
+  const [status,setStatus]=useState(false)
   const [currentBookings, setCurrentBookings] = useState([
     // {
     //     name: "SPACES Miami Printed Bed Cover",
@@ -110,7 +111,7 @@ const ViewActivity = (props) => {
 
     AxiosInstance.post("/update_previous_booking",{
       id:id,
-      booking_status:document.getElementById("his-pop-up-message").innerHTML==="Are you sure? Do you want to cancel your Booking"?false:true
+      booking_status:status
     })
     .then((res)=>{
       console.log(res.data)
@@ -259,12 +260,14 @@ const ViewActivity = (props) => {
                     </div>
                     <div className="book-btn-div">
                         <button className="cancel" onClick={()=>{
+                           setStatus(true)
                           document.getElementById("his-pop-up-message").innerHTML="Are you sure? Do you want to cancel your Booking?"
                           setPopup(true)
                           setId(each._id)
 
                         }}>Cancel</button>
                         <button className="delivered"  onClick={()=>{
+                          setStatus(true)
                         document.getElementById("his-pop-up-message").innerHTML="Are you sure? Have you received your Booking?"
                           setPopup(true)
                           setId(each._id)
