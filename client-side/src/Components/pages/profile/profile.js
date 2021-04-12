@@ -56,7 +56,7 @@ const Profile = () => {
       setProfile(res.data)
     })
   },[])
-  const updateProfile=(name,update)=>{
+  const updateProfile=(name)=>{
     setEditing(false)
     let obj;
     if(name){
@@ -73,6 +73,7 @@ obj={
     }
     AxiosInstance.post("update_profile",obj)
     .then((res)=>{
+      console.log(res.data)
       setProfile(res.data)
     })
   }
@@ -118,7 +119,6 @@ obj={
               }}>{
                 loading?<div><i class="fas fa-sync"></i>&nbsp; <h4>Update</h4></div>:<div><i class="fas fa-sync fa-spin"></i>&nbsp; <h4>Update</h4></div>
               }
-     
               </button>
               </div>
                  }

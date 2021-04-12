@@ -33,6 +33,10 @@ const Header = (props) => {
   const professionhistory=()=>{
     props.changehisPersonal()
   }
+  const logout=()=>{
+    localStorage.removeItem("tok")
+   props.AuthChange("");
+  }
   return (
     <div className="Sidebar">
       {console.log("act",ActivityCnt)}
@@ -96,7 +100,9 @@ const Header = (props) => {
             <div className="sideIcon">
               <i class="fa fa-power-off" aria-hidden="true"></i>
             </div>
-            <text className="sidebarText"><h5>Logout</h5></text>
+            <text className="sidebarText" onClick={()=>{
+            logout()
+            }}><h5>Logout</h5></text>
             <div></div>
           </div>
         </div>
@@ -111,7 +117,7 @@ const Header = (props) => {
 });
 
  const mapDispatchToProps=(dispatch)=>({
-  AuthChange:()=>dispatch(AuthChange()),
+  AuthChange:(token)=>dispatch(AuthChange(token)),
   Authfalse:()=>dispatch(Authfalse()),
   changePersonal:()=>dispatch(changePersonal()),
   changehisPersonal:()=>dispatch(changehistryPersonal())
