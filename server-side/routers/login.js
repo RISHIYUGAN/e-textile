@@ -31,14 +31,19 @@ loginrouter.post('/login',async (req,res)=>{
 
            if(compare)
             {
+                console.log('if ')
+
                 // console.log("same mail and same password")
+                // console.log({token:usermail._id,email:usermail.email,name:usermail.name})
+
 
                 res.send({token:usermail._id,email:usermail.email,name:usermail.name})
             }
             else
             {
+                // console.log('else ')
                 // console.log("wrong pass")
-                res.status(401).send("")
+                res.status(401).send()
             }
         }
         else

@@ -10,9 +10,11 @@ const express=require('express')
 const viewprofile_router=express.Router()
 
 viewprofile_router.post('/view_profile',async(req,res)=>{
+    const token=req.headers.authorization.split(" ")[1]
 
-    await Profile.findOne({token:req.body.token}).then((profile)=>{
-        res.send(profile)
+
+    await Profile.findOne({token:token}).then((pf)=>{
+        res.send(pf)
     })
     
 })

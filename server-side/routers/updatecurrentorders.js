@@ -15,11 +15,12 @@ const bcrypt=require('bcrypt')
 const updatecurrentordersrouter=new express.Router()
 
 updatecurrentordersrouter.post('/update_current_booking',async (req,res)=>{
+  const token=req.headers.authorization.split(" ")[1]
+
 
      const _id=req.body._id
      const quantity=req.body.quantity
      const date=req.body.date
-     const token=req.body.token
      const message=req.body.message
  
      
@@ -44,7 +45,7 @@ updatecurrentordersrouter.post('/update_current_booking',async (req,res)=>{
                 await currentorders.findOne({token:token}).then(async(cur)=>{
                       const array=cur.orderedproductdetails
                       const len=array.length
-                    //   console.log(len)
+                      console.log(len)
                       await Profile.findOne({token:token}).then(async(prf)=>{
                            
                          await Profile.update({token:token},{$set:{"upcomingbookings" :len}}).then(()=>{

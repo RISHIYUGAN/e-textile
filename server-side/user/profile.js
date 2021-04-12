@@ -8,9 +8,10 @@ const userschema=new Schema({
         default:0,
         require:true
     },
-    contact_number:{
+    contact:{
         type:String,
         required:true,
+        
         unique:true
     },
     name:{
@@ -19,7 +20,7 @@ const userschema=new Schema({
     email:{
         type:String
     },
-    personal_id:{
+    customer_id:{
         type:Number
     },
     currentbookings:{

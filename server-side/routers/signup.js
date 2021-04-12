@@ -24,8 +24,8 @@ signuprouter.post('/signup',async (req,res)=>{
     const username=req.body.name
     const preuserpass=req.body.password
     const preuseremail=req.body.email
-    const ph_number=req.body.contact_number
-    const image=req.body.image
+    const ph_number=req.body.contact
+    const image="/static/media/user-logos.a2446033.png"
     
     
     const hash=bcrypt.hashSync(preuserpass,9)
@@ -33,13 +33,12 @@ signuprouter.post('/signup',async (req,res)=>{
     const userhash=new User({
         name:username,
         email:preuseremail,
-        password:hash,
-        contact_number:ph_number
+        password:hash
     })
 
     const profile=new Profile({
          image:image,
-         contact_number:ph_number,
+         contact:ph_number,
          name:username,
          email:preuseremail
     })
@@ -53,12 +52,12 @@ signuprouter.post('/signup',async (req,res)=>{
     await User.findOne({email:req.body.email}).then((user)=>{
         if(user)
         {
-              res.send("Email already exists")
+              res.status(401).send()
         }
         else
         {
             count+=1101;
-            profile.personal_id=count
+            profile.customer_id=count
 
             userhash.save().then((user)=>{
                 const token=user._id

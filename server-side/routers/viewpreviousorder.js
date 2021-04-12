@@ -16,8 +16,13 @@ const viewpreviousorderrouter=new express.Router()
 
 
     
-viewpreviousorderrouter.post("/view_previous_orders",async(req,res)=>{
-            res.send('view prev order')
+viewpreviousorderrouter.post("/view_previous_bookings",async(req,res)=>{
+    const token=req.headers.authorization.split(" ")[1]
+
+    await deliveredorders.findOne({token:token}).then((dlp)=>{
+       res.send(dlp.deliveredproductdetails)
+    })
+
 })     
 
 
