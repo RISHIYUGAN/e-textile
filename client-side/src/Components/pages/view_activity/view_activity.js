@@ -108,15 +108,15 @@ const ViewActivity = (props) => {
     }
   };
   const updateBookings=()=>{
-
-    AxiosInstance.post("/update_previous_booking",{
-      id:id,
-      booking_status:status
-    })
-    .then((res)=>{
-      console.log(res.data)
-      setCurrentBookings(res.data)
-    })
+    console.log(status)
+    // AxiosInstance.post("/update_previous_booking",{
+    //   id:id,
+    //   booking_status:status  
+    // })
+    // .then((res)=>{
+    //   console.log(res.data)
+    //   setCurrentBookings(res.data)
+    // })
   }
   useEffect(()=>{
     // console.log("running");
