@@ -53,9 +53,7 @@ const Login = (props) => {
       document.getElementById("submitButton").disabled="false"
       console.log("response",res.data);
       setSignupLoading(false);
-      setTimeout(() => {
         setSignup(false)
-      }, 1000);
     });
 
   };

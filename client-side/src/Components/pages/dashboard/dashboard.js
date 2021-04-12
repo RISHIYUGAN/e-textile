@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react"
 import "./dashboard.css"
 import p1 from "../../../Assets/images/bedcover1.jpg"
-import {products} from "./products"
+// import {products} from "./products"
 import AxiosInstance from "../../axios/axios"
 import axios from "axios"
 import moment from "moment"
@@ -9,21 +9,22 @@ import moment from "moment"
 export const Dashboard=()=>{
     const [eachdisplay,setEachdisplay]=useState(false)
     const [name,setName]=useState("")
+    const [products,setProducts]=useState([])
     const [info,setInfo]=useState({
-     name:"SPACES Miami Printed Bed Cover",
-      src:p1,
-      stock:true,
-      rating:3,
-      price:500
+    //  name:"SPACES Miami Printed Bed Cover",
+    //   src:p1,
+    //   stock:true,
+    //   rating:3,
+    //   price:500
     })
-    // const[products,setProducts]=useState([])
-    // useEffect(()=>{
-    //   AxiosInstance.get("/fetch_products")
-    //   .then((res)=>{
-    //     console.log("fetched")
-    //     setProducts(res.data)
-    //   })
-    // },[])
+    const[products,setProducts]=useState([])
+    useEffect(()=>{
+      AxiosInstance.get("/fetch_products")
+      .then((res)=>{
+        console.log("fetched")
+        setProducts(res.data)
+      })
+    },[])
     const markedstar = (prdct) => {
         var arr = [];
         for (var i = 1; i <= prdct.rating; i++) {
