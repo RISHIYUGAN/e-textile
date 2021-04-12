@@ -81,7 +81,7 @@ const Login = (props) => {
       })
       .catch((error) => {
         setLoginLoading(false)
-        if(!!error){
+        if(error.response){
           if(error.response.status===401){
             document.getElementById("error").innerHTML=" Invalid username or password !"
             e.target.email.value=""
