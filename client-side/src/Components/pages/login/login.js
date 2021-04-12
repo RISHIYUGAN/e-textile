@@ -30,7 +30,7 @@ const Login = (props) => {
     }
   };
   const SignupbuttonDisable = () => {
-    console.log("running");
+    // console.log("running");
     if (signupDetails.name && signupDetails.email && signupDetails.password) {
       var submitButton = document.querySelector("#submitButton");
       submitButton.disabled = false;
@@ -44,19 +44,20 @@ const Login = (props) => {
     e.preventDefault();
     document.getElementById("submitButton").disabled="true"
     setSignupLoading(true);
-    //     if(document.querySelector("#Sign_upMessage").innerHTML="! Email already exists"){
-    //       document.querySelector("#Sign_upMessage").innerHTML=""
-    //  }
-    //     document.querySelector("#Sign_upMessage").innerHTML=""
-    //     e.preventDefault();
+        if(document.querySelector("#Sign_upMessage").innerHTML="! Email already exists"){
+          document.querySelector("#Sign_upMessage").innerHTML=""
+     }
+        document.querySelector("#Sign_upMessage").innerHTML=""
+        e.preventDefault();
     AxiosInstance.post("/signup", signupDetails).then((res) => {
-      document.getElementById("submitButton").disabled=false
-      console.log(res.data);
+      document.getElementById("submitButton").disabled="false"
+      console.log("response",res.data);
       setSignupLoading(false);
       setTimeout(() => {
-       setSignup(false)
+        setSignup(false)
       }, 1000);
     });
+
   };
   const logging = (e) => {
     e.preventDefault();
