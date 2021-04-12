@@ -75,6 +75,9 @@ export const Dashboard=()=>{
         setEachdisplay(false)
         setLoading(false)
        })
+       .catch(()=>{
+        setLoading(false)
+       })
       console.log(moment(e.target.date.value).format("DD/MM/YYYY"),e.target.product.value,e.target.quantity.value)
       }
     return(

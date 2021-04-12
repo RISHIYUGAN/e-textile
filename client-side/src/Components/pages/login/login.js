@@ -54,19 +54,25 @@ const Login = (props) => {
       console.log("response",res.data);
       setSignupLoading(false);
         setSignup(false)
-    });
+    })
+    .catch(()=>{
+      setSignupLoading(false);
+    })
 
   };
   const logging = (e) => {
     e.preventDefault();
+    setLoginLoading(true)
     AxiosInstance.post("/login", loginDetails)
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("tok", res.data.token);
         props.dispatch(AuthChange(localStorage.getItem("tok")));
+        setLoginLoading(false)
       })
       .catch((error) => {
         console.log(error);
+        setLoginLoading(false)
       });
   };
   useEffect(() => {
@@ -87,6 +93,9 @@ const Login = (props) => {
             <div className="Login-text">
               <h2>LOGIN</h2>
             </div>
+            {/* <p className=""> */}
+
+            {/* </p> */}
             <div className="Login">
               <div className="user-div">
                 <i
