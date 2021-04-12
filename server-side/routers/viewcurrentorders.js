@@ -15,7 +15,7 @@ const viewcurrentorderrouter=new express.Router()
 
 
     
-viewcurrentorderrouter.post("/view_current_order",async(req,res)=>{
+viewcurrentorderrouter.post("/view_current_booking",async(req,res)=>{
             await currentorders.findOne({token:req.body.token}).then((ord)=>{
                 res.send(ord.productdetails)
             })
