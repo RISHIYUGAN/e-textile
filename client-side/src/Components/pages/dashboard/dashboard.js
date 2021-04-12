@@ -10,6 +10,7 @@ export const Dashboard=()=>{
     const [eachdisplay,setEachdisplay]=useState(false)
     const [name,setName]=useState("")
     // const [products,setProducts]=useState([])
+    const [loading,setLoading]=useState(false)
     const [info,setInfo]=useState({
     //  name:"SPACES Miami Printed Bed Cover",
     //   src:p1,
@@ -62,6 +63,7 @@ export const Dashboard=()=>{
       }
       const addbookings=(e)=>{
        e.preventDefault();
+       setLoading(true)
        AxiosInstance.post("update_current_booking",{
          _id:info._id,
          quantity:e.target.quantity.value,
@@ -70,6 +72,8 @@ export const Dashboard=()=>{
        })
        .then((res)=>{
         console.log(res.data)
+        setEachdisplay(false)
+        setLoading(false)
        })
       console.log(moment(e.target.date.value).format("DD/MM/YYYY"),e.target.product.value,e.target.quantity.value)
       }
@@ -142,7 +146,10 @@ export const Dashboard=()=>{
                    name="message"
                    />
                  </div>
-                 <button><h3>Book Now</h3></button>
+                 <button>
+                   {loading? <i class="fas fa-circle-notch fa-spin"></i>:<h3>Book Now</h3>}
+                   
+                   </button>
                </form>
                </div>
              </div>

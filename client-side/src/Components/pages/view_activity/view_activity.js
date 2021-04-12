@@ -27,22 +27,22 @@ const ViewActivity = (props) => {
   const [popup,setPopup]=useState(false)
   const [id,setId]=useState()
   const [currentBookings, setCurrentBookings] = useState([
-    {
-        name: "SPACES Miami Printed Bed Cover",
-        img: "/static/media/bedcover1.da656c91.jpg",
-        date:"12/03/2001",
-        delivery:"12/03/2001",
-        rating:3,
-        quantity:10
-      },
-      {
-        name: "Screen",
-        img: "/static/media/screen2.6ee9dfe6.jpg",
-        date:"12/03/2001",
-        delivery:"12/03/2001",
-        rating:4,
-        quantity:8
-      }
+    // {
+    //     name: "SPACES Miami Printed Bed Cover",
+    //     img: "/static/media/bedcover1.da656c91.jpg",
+    //     date:"12/03/2001",
+    //     delivery:"12/03/2001",
+    //     rating:3,
+    //     quantity:10
+    //   },
+    //   {
+    //     name: "Screen",
+    //     img: "/static/media/screen2.6ee9dfe6.jpg",
+    //     date:"12/03/2001",
+    //     delivery:"12/03/2001",
+    //     rating:4,
+    //     quantity:8
+    //   }
   ]);
   const [previousBookings, setpreviousBookings] = useState([]);
   useEffect(()=>{
@@ -115,7 +115,11 @@ const ViewActivity = (props) => {
       console.log(res.data)
     })
   }
-
+  useEffect(()=>{
+    AxiosInstance.post("view_current_booking").then((res)=>{
+  setCurrentBookings(res.data)
+    })
+  },[])
   return (
     <div className="his-container">
       <div id="his-pop-up-container" className="his-pop-up-container">
