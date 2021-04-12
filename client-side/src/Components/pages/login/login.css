@@ -315,3 +315,8 @@ input:focus{
     transition:border-bottom 1s;
   }
 }
+.error{
+  color: rgba(255, 19, 19, 0.76);
+  font-family: poppins;
+  text-align: center;
+}

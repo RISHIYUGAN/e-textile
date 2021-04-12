@@ -54,9 +54,17 @@ const Login = (props) => {
       console.log("response",res.data);
       setSignupLoading(false);
         setSignup(false)
+        document.getElementById("email-error").innerHTML=""
     })
-    .catch(()=>{
+    .catch((res)=>{
       setSignupLoading(false);
+      // if(res.status===401){
+        document.getElementById("email-error").innerHTML="Email already exists !"
+        e.target.signupname.value=""
+        e.target.signupemail.value=""
+        e.target.signuppassword.value=""
+      // }
+      
     })
 
   };
@@ -69,10 +77,16 @@ const Login = (props) => {
         localStorage.setItem("tok", res.data.token);
         props.dispatch(AuthChange(localStorage.getItem("tok")));
         setLoginLoading(false)
+        document.getElementById.id("error").innerHTML=""
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((res) => {
+        console.log(res);
         setLoginLoading(false)
+        if(res.status===401){
+          document.getElementById("error").innerHTML=" Invalid username or password !"
+          e.target.email.value=""
+          e.target.password.value=""
+        }
       });
   };
   useEffect(() => {
@@ -90,12 +104,13 @@ const Login = (props) => {
       <div className="Login-Container">
         {!signup ? (
           <div>
+             <p id="error" className="error">
+               
+            </p>
             <div className="Login-text">
               <h2>LOGIN</h2>
             </div>
-            {/* <p className=""> */}
-
-            {/* </p> */}
+           
             <div className="Login">
               <div className="user-div">
                 <i
@@ -103,6 +118,7 @@ const Login = (props) => {
                   style={{ borderRadius: "50%" }}
                 ></i>
               </div>
+             
               <div>
                 <form
                   onSubmit={(e) => {
@@ -132,6 +148,7 @@ const Login = (props) => {
                       <i class="fas fa-lock"></i>
                     </div>
                     <input
+                    name="password"
                       id="password"
                       onChange={(e) => {
                         setLoginDetails({
@@ -196,6 +213,7 @@ const Login = (props) => {
           </div>
         ) : (
           <div>
+            <p className="error" id="email-error"></p>
             <h2 className="Login-text">SIGN UP</h2>
             <div className="Login">
               <h4
@@ -216,7 +234,6 @@ const Login = (props) => {
                     fontWeight: "bold",
                   }}
                 ></p>
-
                 <form
                   onSubmit={(e) => {
                     newUser(e);
@@ -231,7 +248,7 @@ const Login = (props) => {
                         <i class="fas fa-user"></i>
                       </div>
                       <input
-                        name="signup_name"
+                        name="signupname"
                         onChange={(e) => {
                           setSignupDetails({
                             ...signupDetails,
@@ -239,7 +256,6 @@ const Login = (props) => {
                           });
                         }}
                         type="text"
-                        name="User_name"
                         className="input"
                         placeholder="User-name"
                       />
@@ -252,7 +268,7 @@ const Login = (props) => {
                         <i class="fas fa-envelope"></i>
                       </div>
                       <input
-                        name="signup_email"
+                        name="signupemail"
                         onChange={(e) => {
                           setSignupDetails({
                             ...signupDetails,
@@ -260,7 +276,6 @@ const Login = (props) => {
                           });
                         }}
                         type="email"
-                        name="Email_id"
                         className="input"
                         placeholder="Email-id"
                       />
@@ -280,7 +295,7 @@ const Login = (props) => {
                           });
                         }}
                         type="password"
-                        name="password"
+                        name="signuppassword"
                         placeholder="Password"
                         className="input"
                         id="password"
