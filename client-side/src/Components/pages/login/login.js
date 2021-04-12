@@ -58,15 +58,12 @@ const Login = (props) => {
     })
     .catch((error)=>{
       setSignupLoading(false);
-      console.log(error)
-      console.log(error.response)
-      console.log(error.response.status)
-      // if(res.status===401){
-      //   document.getElementById("email-error").innerHTML="Email already exists !"
-      //   e.target.signupname.value=""
-      //   e.target.signupemail.value=""
-      //   e.target.signuppassword.value=""
-      // }
+      if(error.response.status===401){
+        document.getElementById("email-error").innerHTML="Email already exists !"
+        e.target.signupname.value=""
+        e.target.signupemail.value=""
+        e.target.signuppassword.value=""
+      }
       
     })
 
@@ -83,17 +80,12 @@ const Login = (props) => {
         document.getElementById.id("error").innerHTML=""
       })
       .catch((error) => {
-        // console.log(res);
-        console.log(error)
-        console.log(error.response)
-        console.log(error.response.status)
-        // console.log(res.status)
         setLoginLoading(false)
-        // if(res.status===401){
-        //   document.getElementById("error").innerHTML=" Invalid username or password !"
-        //   e.target.email.value=""
-        //   e.target.password.value=""
-        // }
+        if(error.response.status===401){
+          document.getElementById("error").innerHTML=" Invalid username or password !"
+          e.target.email.value=""
+          e.target.password.value=""
+        }
       });
   };
   useEffect(() => {
