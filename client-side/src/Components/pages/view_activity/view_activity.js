@@ -57,9 +57,9 @@ const ViewActivity = (props) => {
     document.getElementById("his-pop-up").style.transform="translateY(-120%)"
    }
   },[popup])
-  useEffect(() => {
-    console.log("runningv");
-  }, []);
+  // useEffect(() => {
+  //   console.log("runningv");
+  // }, []);
   const handleSelect = (ranges) => {
     console.log(ranges);
   
@@ -118,10 +118,19 @@ const ViewActivity = (props) => {
     })
   }
   useEffect(()=>{
-    AxiosInstance.post("/view_current_booking").then((res)=>{
-  setCurrentBookings(res.data)
-    })
-  },[])
+    // console.log("running");
+    if(current){
+      AxiosInstance.post("/view_current_bookings").then((res)=>{
+        setCurrentBookings(res.data)
+          })
+        }
+          else{
+            AxiosInstance.post("/view_previous_bookings").then((res)=>{
+              setpreviousBookings(res.data)
+                })
+    }
+  
+  },[current])
   return (
     <div className="his-container">
       <div id="his-pop-up-container" className="his-pop-up-container">
