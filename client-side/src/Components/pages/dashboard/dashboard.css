@@ -165,7 +165,7 @@ flex-grow: 1; */
 }
 .two-in-one{
     transform: translateY(-50%);
-    transition:all 0.5s ease-in-out;
+    /* transition:all 0.5s ease-in-out; */
 }
 .input-wrapper{
     background-color:rgb(255, 88, 88);
