@@ -122,7 +122,7 @@ const Profile = () => {
               <button onClick={()=>{
                 updateProfile()
               }}>{
-                loading?<div><i class="fas fa-sync"></i>&nbsp; <h4>Update</h4></div>:<div><i class="fas fa-sync fa-spin"></i>&nbsp; <h4>Update</h4></div>
+                loading?<div className="loader"><i class="fas fa-sync fa-spin"></i>&nbsp; <h4>Update</h4></div>:<div className="loader"><i class="fas fa-sync"></i>&nbsp; <h4>Update</h4></div>
               }
               </button>
               </div>
