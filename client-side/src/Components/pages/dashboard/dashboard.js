@@ -66,7 +66,7 @@ export const Dashboard=()=>{
        AxiosInstance.post("update_current_booking",{
          _id:info._id,
          quantity:e.target.quantity.value,
-         booked_date:moment.format("DD/MM/YYYY"),
+         booked_date:moment().format("DD/MM/YYYY"),
          expected_date:moment(e.target.date.value).format("DD/MM/YYYY"),
          token:localStorage.getItem("tok")
        })
