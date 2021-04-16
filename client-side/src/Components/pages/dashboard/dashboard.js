@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react"
 import "./dashboard.css"
 import p1 from "../../../Assets/images/bedcover1.jpg"
-// import {products} from "./products"
+import {products} from "./products"
 import AxiosInstance from "../../axios/axios"
 import axios from "axios"
 import moment from "moment"
@@ -9,7 +9,6 @@ import moment from "moment"
 export const Dashboard=()=>{
     const [eachdisplay,setEachdisplay]=useState(false)
     const [name,setName]=useState("")
-    // const [products,setProducts]=useState([])
     const [loading,setLoading]=useState(false)
     const [info,setInfo]=useState({
     //  name:"SPACES Miami Printed Bed Cover",
@@ -18,13 +17,13 @@ export const Dashboard=()=>{
     //   rating:3,
     //   price:500
     })
-    const[products,setProducts]=useState([])
+    // const[products,setProducts]=useState([])
     useEffect(()=>{
-      AxiosInstance.get("/fetch_products")
-      .then((res)=>{
-        console.log("fetched")
-        setProducts(res.data)
-      })
+      // AxiosInstance.get("/fetch_products")
+      // .then((res)=>{
+      //   console.log("fetched")
+      //   setProducts(res.data)
+      // })
     },[])
     const markedstar = (prdct) => {
         var arr = [];
@@ -67,7 +66,8 @@ export const Dashboard=()=>{
        AxiosInstance.post("update_current_booking",{
          _id:info._id,
          quantity:e.target.quantity.value,
-         date:moment(e.target.date.value).format("DD/MM/YYYY"),
+         booked_date:moment.format("DD/MM/YYYY"),
+         expected_date:moment(e.target.date.value).format("DD/MM/YYYY"),
          token:localStorage.getItem("tok")
        })
        .then((res)=>{
