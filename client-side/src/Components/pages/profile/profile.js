@@ -142,11 +142,11 @@ const Profile = () => {
         </div>
         <div className="each-info">
           <h4>Delivered Bookings</h4>
-          <h4>{profile.currentbookings}</h4>
+          <h4>{profile.deliveredbookings}</h4>
         </div>
         <div className="each-info">
           <h4>Current Bookings</h4>
-          <h4>{profile.deliveredbookings}</h4>
+          <h4>{profile.currentbookings}</h4>
         </div>
         <div className="each-info">
           <h4>Mobile</h4>
