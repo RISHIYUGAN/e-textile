@@ -43,6 +43,7 @@ const Profile = () => {
             localImage: compressedFiles[0].dataWithPrefix,
           }));
           setUpdateImage(compressedFiles[0].dataWithPrefix)
+          console.log(compressedFiles[0].dataWithPrefix)
           document.getElementById("profile-pic").style.backgroundImage= `url(${compressedFiles[0].dataWithPrefix})`
         });
       } else {
@@ -85,13 +86,17 @@ const Profile = () => {
   return (
     <div className="pf-container">
        <div className="rep-image">
-              <input  className="inputfile" ref={inputref} onChange={(e)=>imageChangeHandler(e)} type="file" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg"/>
+              <input  className="inputfile" ref={inputref} onChange={(e)=>{
+                imageChangeHandler(e)
+                console.log(e)
+              }
+                }  type="file" name="myImage"/>
             </div>
       <div className="three-dots">
         <i class="fas fa-ellipsis-h" onClick={() => setPopup(!popup)}></i>
         {popup && (
           <div id="pop-up" className="pop-up">
-            <div className="pop-up-wrapper">
+            <div c  lassName="pop-up-wrapper">
               <div className="pin-point"></div>
               <p  className="each-pop" onClick={()=>{setEditing(true)
                 setPopup(false)}}>
@@ -136,12 +141,12 @@ const Profile = () => {
           <h4>{profile.customer_id}</h4>
         </div>
         <div className="each-info">
-          <h4>Current Bookings</h4>
+          <h4>Delivered Bookings</h4>
           <h4>{profile.currentbookings}</h4>
         </div>
         <div className="each-info">
-          <h4>Upcoming Bookings</h4>
-          <h4>{profile.upcomingbookings}</h4>
+          <h4>Current Bookings</h4>
+          <h4>{profile.deliveredbookings}</h4>
         </div>
         <div className="each-info">
           <h4>Mobile</h4>

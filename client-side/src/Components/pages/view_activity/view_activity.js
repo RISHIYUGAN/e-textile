@@ -253,10 +253,10 @@ const ViewActivity = (props) => {
                         <div style={{ textAlign: "initial" }}>
                           <h4>Quantity: {each.quantity}</h4>
                         </div>
-                        <h4>Ordered Date: {each.date}</h4>
+                        <h4>Booked Date: {each.booked_date}</h4>
                       </div>
                       <div>
-                        <h4>Expected Date: {each.delivery}</h4>
+                        <h4>Purchasing Date: {each.expected_date}</h4>
                       </div>
                     </div>
                     <div className="book-btn-div">
@@ -329,10 +329,10 @@ const ViewActivity = (props) => {
                         <div style={{ textAlign: "initial" }}>
                           <h4>Quantity: {each.quantity}</h4>
                         </div>
-                        <h4>Ordered Date: {each.date}</h4>
+                        <h4>Ordered Date: {each.booked_date}</h4>
                       </div>
                       <div>
-                        <h4>Expected Date: {each.delivery}</h4>
+                        <h4>Expected Date: {each.expected_date}</h4>
                       </div>
                     </div>
                   </div>
