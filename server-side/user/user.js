@@ -39,7 +39,7 @@ const userschema=new Shema({
     }
 })
 
-const mong=mongoose.model('User',userschema)
+const mong=mongoose.model('login',userschema)
 
 
 console.log('user information is running')

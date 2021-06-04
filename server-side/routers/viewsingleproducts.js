@@ -17,6 +17,7 @@ const viewsinglerouter=new express.Router()
 
     
 viewsinglerouter.post("/view_single_product",async(req,res)=>{
+    console.log(req.body)
       await Product.findOne({unique_id:0}).then((pr)=>{
           const indproducts=pr.products
           

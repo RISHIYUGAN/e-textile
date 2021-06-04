@@ -19,7 +19,7 @@ const Profile=require('../user/profile')
 const signuprouter=new express.Router()
 
 signuprouter.post('/signup',async (req,res)=>{
-
+console.log(req.body)
    
     const username=req.body.name
     const preuserpass=req.body.password
@@ -87,30 +87,30 @@ signuprouter.post('/signup',async (req,res)=>{
             
 
   
-      //   let mailTransporter = nodemailer.createTransport({
-      //          service: 'gmail',
-      //         auth: {
-      //         user: 'parthivijay151@gmail.com',
-      //         pass: '6382811325'
-      //      }
-      //   });
+        let mailTransporter = nodemailer.createTransport({
+               service: 'gmail',
+              auth: {
+              user: 'parthivijay151@gmail.com',
+              pass: '6382811325'
+           }
+        });
   
-      //    let mailDetails = {
-      //        from: 'parthivijay151@gmail.com',
-      //        to: req.body.email,
-      //       subject: 'Test mail',
-      //       text: 'Hey ' + req.body.name + ' Nice to have you in TODO interface'
-      //     };
+         let mailDetails = {
+             from: 'parthivijay151@gmail.com',
+             to: req.body.email,
+            subject: 'Test mail',
+            text: 'Hey ' + req.body.name + '! Your registration On E-Tex has been successful' 
+          };
   
-      //    mailTransporter.sendMail(mailDetails, function(err, data) {
-      //    if(err) 
-      //    {
-      //     console.log(err);
-      //    } else 
-      //    {
-      //      console.log('Email sent successfully');
-      //    }
-      // });
+         mailTransporter.sendMail(mailDetails, function(err, data) {
+         if(err) 
+         {
+          console.log(err);
+         } else 
+         {
+           console.log('Email sent successfully');
+         }
+      });
 
 
            

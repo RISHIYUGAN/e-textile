@@ -15,7 +15,7 @@ const userschema=new Shema({
     
 })
 
-const mong=mongoose.model('deliveredorders database',userschema)
+const mong=mongoose.model('deliveredbookings',userschema)
 
 
 

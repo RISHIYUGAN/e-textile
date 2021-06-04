@@ -16,7 +16,7 @@ const userschema=new Shema({
     }
 })
 
-const mong=mongoose.model('products database',userschema)
+const mong=mongoose.model('products',userschema)
 
 
 console.log('products is running')

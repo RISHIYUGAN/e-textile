@@ -23,11 +23,11 @@ const userschema=new Schema({
     customer_id:{
         type:Number
     },
-    currentbookings:{
+    deliveredbookings:{
         type:Number,
         default:0
     },
-    upcomingbookings:{
+    currentbookings:{
         type:Number,
         default:0
     },

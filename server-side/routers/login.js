@@ -15,29 +15,18 @@ const nodemailer = require('nodemailer');
 
 
 loginrouter.post('/login',async (req,res)=>{
-        const postuserpass=req.body.password
-        // console.log(postuserpass)
-        // console.log(req.body.email)
-
-        //  console.log("enter")
-        await User.findOne({email:req.body.email}).then((usermail)=>{
-        if(usermail)
     
-        {
-            
-
-            // console.log("same mail")
-           const compare=bcrypt.compareSync(postuserpass,usermail.password)
-
+        const postuserpass=req.body.password
+        
+        await User.findOne({email:req.body.email}).then((usermail)=>{
+        if(usermail)    
+        {         
+            console.log('if')
+            const compare=bcrypt.compareSync(postuserpass,usermail.password)
            if(compare)
             {
-                console.log('if ')
-
-                // console.log("same mail and same password")
-                // console.log({token:usermail._id,email:usermail.email,name:usermail.name})
-
-
-                res.send({token:usermail._id,email:usermail.email,name:usermail.name})
+                console.log('if ')              
+                   res.send({token:usermail._id,email:usermail.email,name:usermail.name})
             }
             else
             {

@@ -19,7 +19,7 @@ updateprofile_router.post('/update_profile',async(req,res)=>{
             
             await Profile.update({token:token},{$set:{"image":image,"name":name}}).then(async()=>{
                 await Profile.findOne({token:token}).then((pf)=>{
-                    console.log(pf)
+                    // console.log(pf)
                     res.send(pf)
                 })
        })

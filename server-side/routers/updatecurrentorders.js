@@ -5,6 +5,8 @@ const currentorders=require('../user/currentorders')
 const deliveredorders=require('../user/deliveredorders')
 const Profile=require('../user/profile')
 
+const nodemailer = require('nodemailer');
+
 
 const express=require('express')
 
@@ -16,11 +18,14 @@ const updatecurrentordersrouter=new express.Router()
 
 updatecurrentordersrouter.post('/update_current_booking',async (req,res)=>{
   const token=req.headers.authorization.split(" ")[1]
+// const token=req.body.token
 
 
      const _id=req.body._id
      const quantity=req.body.quantity
-     const date=req.body.date
+     const booked_date=req.body.booked_date
+     const expected_date=req.body.expected_date
+
      const message=req.body.message
  
      
@@ -33,7 +38,8 @@ updatecurrentordersrouter.post('/update_current_booking',async (req,res)=>{
         })
         
         ordproduct.quantity=quantity
-        ordproduct.date=date
+        ordproduct.booked_date=booked_date
+        ordproduct.expected_date=expected_date
         ordproduct.message=message
         
 
@@ -48,7 +54,7 @@ updatecurrentordersrouter.post('/update_current_booking',async (req,res)=>{
                       console.log(len)
                       await Profile.findOne({token:token}).then(async(prf)=>{
                            
-                         await Profile.update({token:token},{$set:{"upcomingbookings" :len}}).then(()=>{
+                         await Profile.update({token:token},{$set:{"currentbookings" :len}}).then(()=>{
                               res.send("current booking inserted ")
                              })
                       }) 
@@ -57,6 +63,36 @@ updatecurrentordersrouter.post('/update_current_booking',async (req,res)=>{
         })
         
   }) 
+
+       await User.findOne({_id:token}).then((user)=>{
+         const email=user.email
+        let mailTransporter = nodemailer.createTransport({
+            service: 'gmail',
+           auth: {
+           user: 'parthivijay151@gmail.com',
+           pass: '6382811325'
+        }
+     });
+
+      let mailDetails = {
+          from: 'parthivijay151@gmail.com',
+          to: user.email,
+         subject: 'Test mail',
+         text: 'Hey ' + user.name + '! Your booking has been recorded ! '
+       };
+
+      mailTransporter.sendMail(mailDetails, function(err, data) {
+      if(err) 
+      {
+       console.log(err);
+      } else 
+      {
+        console.log('Email sent successfully');
+      }
+   });
+
+
+       })
 
 
 })
